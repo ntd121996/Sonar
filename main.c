@@ -79,10 +79,11 @@ void delay_ms(unsigned int time)
 void truyen_song()
 {
   Trig=0;
-  delay_us(2);
+  delay_us(1);
   Trig=1;
-  TIM2_CR1_CEN  = 1;
+   TIM2_CR1_CEN  = 1;
   delay_us(12);
+ 
 
 }
 //____MAIN
@@ -94,7 +95,7 @@ main()
   { 
       
       truyen_song();
-      delay_ms(50);
+      delay_ms(1000);
      
      
   }
@@ -105,6 +106,7 @@ main()
 #pragma vector = TIM2_OVR_UIF_vector
 __interrupt void ngat_TIM(void)
 {   
+    TIM2_CR1_CEN  = 1;
     if(dem>=2500) //qua 30ms reset lai ve 0
     { 
       dem=0;
@@ -121,7 +123,7 @@ __interrupt void ngat_TIM(void)
 __interrupt void ngatngoai(void)
 { 
     while(Echo==1);
-    TIM2_CR1_CEN  = 0;
+    TIM2_CR1_CEN  = 0; //tat timer
     range  =(0.036*dem*6);
     dem    =0;
     Led_xanh=0;
