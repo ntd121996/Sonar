@@ -46,7 +46,7 @@ void Init_all()
   TIM2_CR1_CEN                  = 0; 
   
   /*Cau Hinh Ngat Ngoai*/
-  EXTI_CR1_PCIS                 =2;
+  EXTI_CR1_PCIS                 =2;// ngat tai suon xuong
     __enable_interrupt(); 
  
   
